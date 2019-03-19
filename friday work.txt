@@ -1,0 +1,39 @@
+import random
+low_bound = 0
+high_bound = int(input('Please enter a high boundary '))
+guessed_numbers = set()
+
+while True:
+    guess = random.randint(low_bound,high_bound)
+    
+    while guess not in guessed_numbers:
+        print("Is your number ", guess)
+
+        response = input()
+
+        if response == 'lower':
+            high_bound = guess
+            guessed_numbers.add(guess)
+            continue      
+        elif response == 'higher':
+            low_bound = guess
+            guessed_numbers.add(guess)
+            continue
+        elif response == 'correct':
+            print('Got it')
+            guessed_numbers.add(guess)
+            break
+
+from functools import lru_cache
+@lru_cache(maxsize=1001)
+
+def fibonacci(n):
+    #Generate the fibonacci sequence
+    if n == 1:
+        return 1
+    elif n ==2:
+        return 1
+    elif n > 2:
+        return fibonacci(n-1) + fibonacci(n-2)
+for x in range(100):
+    print(fibonacci(x))
